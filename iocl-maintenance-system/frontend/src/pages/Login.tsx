@@ -82,8 +82,8 @@ const Login = () => {
             </span>
           </h2>
           <p className="text-gray-400 text-lg mb-12 leading-relaxed max-w-lg">
-            Real-time monitoring and maintenance management for industrial pump
-            operations
+            {/* Real-time monitoring and maintenance management for IOCL pump
+            operations */}
           </p>
 
           {/* Features */}
@@ -97,7 +97,7 @@ const Login = () => {
                   Real-Time Monitoring
                 </h3>
                 <p className="text-sm text-gray-400">
-                  Track all pump operations with live data updates
+                  {/* Track all pump operations with live data updates */}
                 </p>
               </div>
             </div>
@@ -110,7 +110,7 @@ const Login = () => {
                   Predictive Maintenance
                 </h3>
                 <p className="text-sm text-gray-400">
-                  AI-powered scheduling and maintenance alerts
+                  {/* AI-powered scheduling and maintenance alerts */}
                 </p>
               </div>
             </div>
