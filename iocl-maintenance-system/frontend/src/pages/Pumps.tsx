@@ -14,16 +14,23 @@ const Pumps = () => {
       status: "Maintenance",
       location: "Sector 3",
       lastService: "2025-11-20",
-      pressure: "—",
+      pressure: "100 PSI",
     },
     {
       name: "Pump C",
       status: "Offline",
       location: "Sector 5",
       lastService: "2025-10-15",
-      pressure: "—",
+      pressure: "200 PSI",
     },
-  ]
+    {
+      name: "Pump D",
+      status: "Active",
+      location: "Sector 2",
+      lastService: "2025-12-10",
+      pressure: "110 PSI",
+    },
+  ];
 
   return (
     <div>
@@ -40,8 +47,8 @@ const Pumps = () => {
             </tr>
           </thead>
           <tbody>
-            {pumps.map(pump => (
-              <tr key={pump.name} className="border-t hover:bg-gray-50">
+            {pumps.map((pump) => (
+              <tr key={pump.name} className="border-t hover:bg-gray-500">
                 <td className="p-3 font-medium">{pump.name}</td>
                 <td className="p-3">{pump.status}</td>
                 <td className="p-3">{pump.location}</td>
@@ -53,7 +60,7 @@ const Pumps = () => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Pumps
+export default Pumps;
