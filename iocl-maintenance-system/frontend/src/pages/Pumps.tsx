@@ -30,6 +30,20 @@ const Pumps = () => {
       lastService: "2025-12-10",
       pressure: "110 PSI",
     },
+    {
+      name: "Pump E",
+      status: "Active",
+      location: "Sector 4",
+      lastService: "2025-11-30",
+      pressure: "130 PSI",
+    },
+    {
+      name: "Pump F",
+      status: "Maintenance",
+      location: "Sector 6",
+      lastService: "2025-12-05",
+      pressure: "115 PSI",
+    },
   ];
 
   return (
