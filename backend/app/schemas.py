@@ -49,3 +49,12 @@ class PredictionRequest(BaseModel):
 class PredictionResponse(BaseModel):
     failure_probability: float
     status: str
+    
+# from pydantic import BaseModel
+
+class PumpCreate(BaseModel):
+    pump_name: str
+    temperature: float
+    pressure: float
+    status: str
+

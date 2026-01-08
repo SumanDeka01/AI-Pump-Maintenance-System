@@ -6,6 +6,10 @@ from routes.pump import router as pump_router
 from routes.predict import router as predict_router
 from .database import Base, engine
 from .models import Pump
+from routes.pump import router
+
+
+
 
 
 
@@ -24,6 +28,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(auth_router, prefix="/auth", tags=["Auth"])
 app.include_router(pump_router, prefix="/pumps", tags=["Pumps"])
 app.include_router(predict_router, prefix="/predict", tags=["Prediction"])
+app.include_router(pump_router, prefix="/pumps", tags=["Pumps"])
 
 @app.get("/")
 def root():

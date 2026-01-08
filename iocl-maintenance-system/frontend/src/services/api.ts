@@ -1,20 +1,10 @@
-const BASE_URL = "http://127.0.0.1:8000";
+import axios from "axios";
 
-export async function predictPump(data: {
-  temperature: number;
-  vibration: number;
-  pressure: number;
-}) {
-  const res = await fetch(`${BASE_URL}/predict`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
-    },
-    body: JSON.stringify(data)
-  });
+const api = axios.create({
+  baseURL: "http://localhost:8000",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-  return res.json();
-}
-
-// #eyatu kiba ata issue!
+export default api;
