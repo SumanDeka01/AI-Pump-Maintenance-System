@@ -73,7 +73,6 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Tagline */}
           <h2 className="text-5xl font-bold mb-6 leading-tight">
             Advanced Pump
             <br />

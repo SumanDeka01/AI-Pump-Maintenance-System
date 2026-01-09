@@ -1,25 +1,25 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from app.schemas import PumpCreate
-from app.database import SessionLocal
-from app.ai import predict_health
-from app.crud import create_pump
+from fastapi import APIRouter
+import pickle
+import numpy as np
 
-router = APIRouter(prefix="/predict")
+router = APIRouter()
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+# Load trained model
+with open("app/pump_failure_model.pkl", "rb") as f:
+    model = pickle.load(f)
 
-@router.post("/")
-def predict(pump: PumpCreate, db: Session = Depends(get_db)):
-    health = predict_health(
-        pump.temperature,
-        pump.vibration,
-        pump.pressure
-    )
-    saved = create_pump(db, pump, health)
-    return saved
+@router.post("/predict")
+def predict_pump_failure(
+    temperature: float,
+    pressure: float,
+    vibration: float,
+    flow_rate: float,
+    rpm: float
+):
+    input_data = np.array([[temperature, pressure, vibration, flow_rate, rpm]])
+    prediction = model.predict(input_data)[0]
+
+    return {
+        "prediction": int(prediction),
+        "status": "FAILURE" if prediction == 1 else "HEALTHY"
+    }

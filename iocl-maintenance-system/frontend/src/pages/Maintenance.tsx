@@ -2,11 +2,43 @@
 
 const Maintenance = () => {
   const maintenanceData = [
-    { pump: "Pump A", action: "Oil Change", date: "2025-12-01", status: "Completed" },
-    { pump: "Pump B", action: "Filter Replacement", date: "2025-12-10", status: "Pending" },
-    { pump: "Pump C", action: "Valve Check", date: "2025-11-20", status: "Completed" },
-    { pump: "Pump D", action: "Pressure Calibration", date: "2025-12-15", status: "Pending" },
-  ]
+    {
+      pump: "(ID: 06) CDU-CPP-P-01B",
+      action: "Oil Change",
+      date: "2025-12-01",
+      status: "Completed",
+    },
+    {
+      pump: "(ID: 07) VDU-CPP-P-02A",
+      action: "Filter Replacement",
+      date: "2025-12-10",
+      status: "Pending",
+    },
+    {
+      pump: "(ID: 08) VDU-CPP-P-02B",
+      action: "Valve Check",
+      date: "2025-11-20",
+      status: "Completed",
+    },
+    {
+      pump: "(ID: 09) HSD-FDP-P-01A",
+      action: "Pressure Calibration",
+      date: "2025-12-15",
+      status: "Pending",
+    },
+    {
+      pump: "(ID: 10) HSD-FDP-P-01B",
+      action: "Pressure Calibration",
+      date: "2025-12-15",
+      status: "Pending",
+    },
+    {
+      pump: "(ID: 19) PLN-BST-P-01B",
+      action: "Pressure Calibration",
+      date: "2025-12-15",
+      status: "Pending",
+    },
+  ];
 
   return (
     <div>
@@ -27,7 +59,13 @@ const Maintenance = () => {
                 <td className="p-3 font-medium">{item.pump}</td>
                 <td className="p-3">{item.action}</td>
                 <td className="p-3">{item.date}</td>
-                <td className={`p-3 font-semibold ${item.status === "Completed" ? "text-green-600" : "text-yellow-600"}`}>
+                <td
+                  className={`p-3 font-semibold ${
+                    item.status === "Completed"
+                      ? "text-green-600"
+                      : "text-yellow-600"
+                  }`}
+                >
                   {item.status}
                 </td>
               </tr>
@@ -36,7 +74,7 @@ const Maintenance = () => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Maintenance
+export default Maintenance;

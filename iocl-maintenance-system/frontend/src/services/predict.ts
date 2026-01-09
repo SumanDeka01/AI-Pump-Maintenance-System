@@ -1,27 +1,25 @@
-import api from "./api";
-
-export type FailurePrediction = {
-  failure: boolean;
-  probability?: number;
-};
-
-export type PumpInput = {
+type PredictPayload = {
   temperature: number;
   pressure: number;
 };
 
-export const predictFailure = async (
-  pump: PumpInput
-): Promise<FailurePrediction | null> => {
-  try {
-    const res = await api.post("/predict", {
-      temperature: pump.temperature,
-      pressure: pump.pressure,
-    });
+export const predictFailure = async (payload: PredictPayload) => {
+  const response = await fetch(
+    "http://127.0.0.1:8000/predict/failure",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    }
+  );
 
-    return res.data;
-  } catch (error) {
-    console.error("Error predicting pump failure:", error);
-    return null;
+  if (!response.ok) {
+    throw new Error("Prediction failed");
   }
+
+  // IMPORTANT: return backend response AS-IS
+  const data = await response.json();
+  return data;
 };

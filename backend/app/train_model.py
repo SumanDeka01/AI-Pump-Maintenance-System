@@ -1,22 +1,49 @@
-import joblib
+import pandas as pd
+import time
+import pickle
+
+from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-import numpy as np
+from sklearn.metrics import accuracy_score
 
-# dummy training data (replace later with real sensor data)
-X = np.array([
-    [60, 0.3, 3.1],
-    [90, 1.2, 5.5],
-    [75, 0.6, 4.0],
-    [110, 1.8, 6.8]
-])
+print("Loading dataset...")
 
-y = np.array([0, 1, 0, 1])  # 0 = normal, 1 = failure
+# Load CSV
+data = pd.read_csv("pump_data.csv")
 
-model = RandomForestClassifier()
-model.fit(X, y)
+# Features and target
+X = data.drop(["pump_id", "fail"], axis=1)
+y = data["fail"]
 
-joblib.dump(model, "pump_failure_model.pkl")
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
+print("Training model...")
 
-print("✅ Model saved successfully")
-print("✅ Training completed")
+# Start timing
+start_time = time.time()
+
+# Model
+model = RandomForestClassifier(
+    n_estimators=100,
+    random_state=42
+)
+model.fit(X_train, y_train)
+
+# End timing
+end_time = time.time()
+
+# Accuracy
+predictions = model.predict(X_test)
+accuracy = accuracy_score(y_test, predictions)
+
+print("Model Accuracy:", accuracy)
+print("Training Time (seconds):", end_time - start_time)
+
+# Save model
+with open("pump_failure_model.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+print("Model saved as pump_failure_model.pkl")

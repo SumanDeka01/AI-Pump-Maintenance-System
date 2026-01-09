@@ -2,11 +2,11 @@
 
 const Reports = () => {
   const reportSummary = [
-    { metric: "Total Pumps", value: 12 },
-    { metric: "Active Pumps", value: 8 },
-    { metric: "Pumps Under Maintenance", value: 3 },
-    { metric: "Offline Pumps", value: 1 },
-  ]
+    { metric: "Total Pumps", value: 20 },
+    { metric: "Active Pumps", value: 11 },
+    { metric: "Pumps Under Maintenance", value: 6 },
+    { metric: "Offline Pumps", value: 3 },
+  ];
 
   return (
     <div>
@@ -20,7 +20,7 @@ const Reports = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Reports
+export default Reports;
