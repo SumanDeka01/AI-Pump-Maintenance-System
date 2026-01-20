@@ -18,6 +18,12 @@ def predict_failure(data: PumpData):
     temp = data.temperature
     pressure = data.pressure
 
+
+# This are the hardcoded data for prediction logic
+# Another logic can be implemented to load the trained model and use it for prediction
+
+
+
     # 🔹 Base failure probability
     probability = 0.10
 
