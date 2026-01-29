@@ -47,13 +47,13 @@ const Login = () => {
           ></div>
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-center opacity-10">
+        {/* <div className="absolute inset-0 flex items-center justify-center opacity-10">
           <img
             src="/src/assets/logo.png"
             alt="IOCL Background"
             className="w-2/3 h-auto object-contain blur-sm"
           />
-        </div>
+        </div> */}
 
         <div className="relative z-10 flex flex-col justify-center px-16 text-white">
           <div className="flex items-center space-x-4 mb-12">
